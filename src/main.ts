@@ -1,6 +1,14 @@
 import { app, BrowserWindow } from "electron";
 import * as path from "path";
 
+
+interface SharedObject {
+  someProperty: string;
+};
+
+let sharedObject: SharedObject;
+
+
 let mainWindow: Electron.BrowserWindow;
 
 function createWindow() {
@@ -9,6 +17,10 @@ function createWindow() {
     height: 600,
     width: 800,
   });
+
+  sharedObject = {
+    someProperty: "hello"
+  };
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "../index.html"));
